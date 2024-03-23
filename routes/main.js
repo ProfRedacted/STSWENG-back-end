@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-     res.status(201)
+     res.status(200)
 })
 
 

@@ -21,6 +21,11 @@ const materialSchema = new mongoose.Schema({
      price: {
           type: Number,
           require: true
+     },
+     createdAt: {
+          type: Date,
+          require: true,
+          default: Date.now
      }
 
 })

@@ -24,5 +24,5 @@ const mainRouter = require('./routes/main')
 const materialRouter = require('./routes/material')
 
 app.use('/', mainRouter)
-app.use('/materials', materialRouter)
+app.use('/material', materialRouter)
 

@@ -4,13 +4,12 @@ const Material = require('../models/material')
 
 router.get('/', async (req, res) => {
      try {
-          const materials = await Material.find()
+          const materials = await Material.find().limit(100).sort({createdAt: -1})
           res.status(200).json(materials)
      } catch (err) {
           res.status(500).json({message: err.message})
      }
 })
-
 
 router.post('/', async (req, res) => {
      const material = new Material({
@@ -26,7 +25,6 @@ router.post('/', async (req, res) => {
           res.status(400).json({message:  err.message})
      }
 })
-
 
 
 module.exports = router
