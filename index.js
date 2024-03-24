@@ -1,14 +1,15 @@
 require('dotenv').config()
-
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const morgan = require('morgan')
+const cors = require('cors')
 
 const PORT = process.env.PORT || 3000
 
 app.use(express.json())
 app.use(morgan('tiny'))
+app.use(cors({ origin: process.env.FRONTEND_URL}))
 
 
 mongoose.connect(process.env.DATABASE_URL)
@@ -24,8 +25,9 @@ app.listen(PORT,
 
 const mainRouter = require('./routes/main')
 const materialRouter = require('./routes/material')
+const quotaRouter = require('./routes/quota')
 
 app.use('/', mainRouter)
 app.use('/material', materialRouter)
-app.use
+app.use('/quota', quotaRouter)
 
