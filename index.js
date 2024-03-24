@@ -5,6 +5,10 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 const cors = require('cors')
 
+const mainRouter = require('./routes/main')
+const materialRouter = require('./routes/material')
+const quoteRouter = require('./routes/quote')
+
 const PORT = process.env.PORT || 3000
 
 app.use(express.json())
@@ -23,9 +27,6 @@ app.listen(PORT,
      }
 )
 
-const mainRouter = require('./routes/main')
-const materialRouter = require('./routes/material')
-const quoteRouter = require('./routes/quote')
 
 app.use('/', mainRouter)
 app.use('/material', materialRouter)

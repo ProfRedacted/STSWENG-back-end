@@ -1,6 +1,11 @@
 const mongoose = require('mongoose')
 
 const quoteSchema = new mongoose.Schema({
+     createdAt: {
+          type: Date,
+          require: true,
+          default: Date.now
+     }, 
      client: {
           type: String,
           require: true
@@ -22,14 +27,9 @@ const quoteSchema = new mongoose.Schema({
                message   : 'Value is not an integer value'
           }
      },
-     price: {
-          type: Number,
+     registerID: {
+          type: String,
           require: true
-     },
-     createdAt: {
-          type: Date,
-          require: true,
-          default: Date.now
      }
 
 })
