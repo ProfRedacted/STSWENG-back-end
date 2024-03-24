@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
           res.status(400).json({message:  err.message})
      }
 })
-
+// uses automated generated id to put and deleted not the register ID
 router.put('/:_id', async (req, res) => {
      const id = req.params._id
      const updatedQuota = {
