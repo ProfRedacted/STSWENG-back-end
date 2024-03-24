@@ -25,7 +25,7 @@ app.listen(PORT,
 
 const mainRouter = require('./routes/main')
 const materialRouter = require('./routes/material')
-const quoteRouter = require('./models/quote')
+const quoteRouter = require('./routes/quote')
 
 app.use('/', mainRouter)
 app.use('/material', materialRouter)
