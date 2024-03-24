@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const quotaSchema = new mongoose.Schema({
+const quoteSchema = new mongoose.Schema({
      client: {
           type: String,
           require: true
@@ -33,4 +33,4 @@ const quotaSchema = new mongoose.Schema({
      }
 
 })
-module.exports = mongoose.model('quota',quotaSchema)
+module.exports = mongoose.model('quote',quoteSchema)
