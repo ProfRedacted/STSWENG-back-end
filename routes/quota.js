@@ -13,10 +13,11 @@ router.get('/', async (req, res) => {
 
 router.post('/',async (req, res) => {
      const quota = new Quota({
-          material: req.body.material,
-          source: req.body.source,
-          amount: req.body.amount,
-          price: req.body.price
+          client: req.body.client,
+          company: req.body.company,
+          salesPerson: req.body.salesPerson,
+          total: req.body.total,
+          registerID: req.body.registerID
      })
      try {
           const newQuota = await quota.save()
