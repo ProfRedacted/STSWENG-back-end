@@ -4,10 +4,13 @@ const app = express()
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const cors = require('cors')
+const bcrpyt = require('bcrypt')
 
 const mainRouter = require('./routes/main')
 const materialRouter = require('./routes/material')
 const quoteRouter = require('./routes/quote')
+const loginRouter = require('./routes/login')
+const registerRouter = require('./routes/register')
 
 const PORT = process.env.PORT || 3000
 
@@ -31,4 +34,6 @@ app.listen(PORT,
 app.use('/', mainRouter)
 app.use('/material', materialRouter)
 app.use('/quote', quoteRouter)
+app.use('/login', loginRouter)
+app.use('/register', registerRouter)
 
