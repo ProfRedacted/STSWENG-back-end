@@ -5,7 +5,7 @@ const bcrpyt = require('bcrypt')
 
 
 router.post('/', async (req, res) => {
-     if (!(req.body.name && req.body.email   && req.body.password)) {
+     if (!(req.body.name && req.body.email  && req.body.password)) {
           res.status(400).json({message: "Not valid input"})
      }
      try {

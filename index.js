@@ -33,5 +33,5 @@ app.listen(PORT,
 app.use('/', mainRouter)
 app.use('/material', materialRouter)
 app.use('/quote', quoteRouter)
-app.use('/register', userRouter)
+app.use('/user', userRouter)
 
