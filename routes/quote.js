@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
      if (!(req.body.client && req.body.company 
           && req.body.salesPerson && req.body.total
           && req.body.registerID)) {
-          res.status(400).json({message: "Not valid input"})
+          return res.status(400).json({message: "Not valid input"})
      }
      const quote = new Quote({
           client: req.body.client,
