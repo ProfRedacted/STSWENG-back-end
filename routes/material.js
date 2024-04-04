@@ -12,6 +12,10 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
+     if (!(req.body.material && req.body.source 
+          && req.body.amount && req.body.price)) {
+          res.status(400).json({message: "Not valid input"})
+     }
      const material = new Material({
           material: req.body.material,
           source: req.body.source,
