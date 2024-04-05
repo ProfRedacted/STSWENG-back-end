@@ -14,8 +14,10 @@ router.post('/login', async (req, res) => {
      }
      try {
           if (await bcrpyt.compare(req.body.password, user.password)) {
-               const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
-               return res.status(201).json({token: "accessToken"})
+               const userID = {id: user._id}
+               const accessToken = generateAccessToken(userID)
+               const refreshToken = jwt.sign(userID, process.env.REFRESH_TOKEN_SECRET)
+               return res.status(201).json({accessToken: accessToken, refreshToken: refreshToken})
           } else {
                return res.status(401).send('Failure')
           }
@@ -43,5 +45,9 @@ router.post('/register', async (req, res) => {
           res.status(400).json({message:  err.message})
      }
 })
+
+const generateAccessToken = (user) => {
+     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '30m'})
+}
 
 module.exports = router

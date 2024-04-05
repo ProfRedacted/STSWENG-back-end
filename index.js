@@ -6,6 +6,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const bcrpyt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const authToken = require('./authetication/authToken')
 
 
 const PORT = process.env.PORT || 3000
@@ -14,6 +15,7 @@ app.use(express.json())
 app.use(morgan('tiny'))
 app.use(cors({ origin: process.env.FRONTEND_URL}))
 
+app.all('*', authToken)
 
 mongoose.connect(process.env.DATABASE_URL)
 const db = mongoose.connection
