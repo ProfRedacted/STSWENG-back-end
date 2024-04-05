@@ -32,9 +32,11 @@ const mainRouter = require('./routes/main')
 const materialRouter = require('./routes/material')
 const quoteRouter = require('./routes/quote')
 const userRouter = require('./routes/user')
+const tokenRouter = require('./routes/token')
 
 app.use('/', mainRouter)
 app.use('/material', materialRouter)
 app.use('/quote', quoteRouter)
 app.use('/user', userRouter)
+app.use('/token', tokenRouter)
 

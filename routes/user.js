@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
+const Token = require('../models/token')
 const bcrpyt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
@@ -46,8 +47,24 @@ router.post('/register', async (req, res) => {
      }
 })
 
+
+router.delete('/logout', async (req, res) => {
+     try {
+          const user = await Token.findOneAndDelete({refreshToken: req.body.refreshToken}).exec()
+          if (user) {
+               res.status(204)
+          } else {
+               res.status(400)
+          }
+     } catch {
+          res.status(500)
+     }
+
+})
+
 const generateAccessToken = (user) => {
      return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '30m'})
 }
+
 
 module.exports = router
